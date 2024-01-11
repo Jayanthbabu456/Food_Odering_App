@@ -1,9 +1,13 @@
+import Body from "./Components/Body";
+import Footer from "./Components/Footer";
+import Header from "./Components/Header";
+
 const App = () => {
   return (
-    <div className="App">
-      <p className="text-3xl font-bold bg-slate-400 w-screen h-screen">
-        Food Ordering App
-      </p>
+    <div className="bg-white  py-2">
+      <Header />
+      <Body />
+      <Footer />
     </div>
   );
 };
