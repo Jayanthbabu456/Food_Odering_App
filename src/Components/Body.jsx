@@ -60,9 +60,15 @@ const Body = () => {
       </div>
       {/* Restaurant Cards */}
       <div className="flex flex-wrap gap-[20px] justify-center items-center">
-        {resList.map((restaurant, key) => (
-          <RestaurantCard key={restaurant.info.id} resData={restaurant} />
-        ))}
+        {resList && resList.length > 0 ? (
+          resList.map((restaurant, key) => (
+            <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+          ))
+        ) : (
+          <p className="text-[20px] font-Montserrat font-semibold">
+            No restaurants available.
+          </p>
+        )}
       </div>
     </div>
   );
