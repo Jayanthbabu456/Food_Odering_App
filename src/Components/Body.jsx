@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import RestaurantCard from "./RestaurantCard";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
   const [resList, setresList] = useState([]);
@@ -18,6 +19,15 @@ const Body = () => {
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
+  if (!resList || resList.length === 0) {
+    return (
+      <Shimmer
+        resList={resList}
+        setresList={setresList}
+        fetchData={fetchData}
+      />
+    );
+  }
   return (
     <div className="bg-orange-100 shadow-xl rounded-md w-[95%] mx-auto my-2 flex flex-col gap-[30px] py-5 px-5">
       {/* top search div */}
