@@ -4,7 +4,7 @@ import Header from "./Components/Header";
 
 const App = () => {
   return (
-    <div className="bg-white  py-2">
+    <div className="bg-white  py-2 min-h-screen">
       <Header />
       <Body />
       <Footer />

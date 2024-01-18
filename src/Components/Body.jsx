@@ -6,6 +6,8 @@ import Shimmer from "./Shimmer";
 
 const Body = () => {
   const [resList, setresList] = useState([]);
+  const [filteredrestaurant, setfilteredrestaurant] = useState([]);
+  const [searchText, setsearchText] = useState("");
   useEffect(() => {
     fetchData();
   }, []);
@@ -16,6 +18,9 @@ const Body = () => {
     const json = await data.json();
     console.log(json);
     setresList(
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    setfilteredrestaurant(
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
@@ -29,7 +34,7 @@ const Body = () => {
     );
   }
   return (
-    <div className="bg-orange-100 shadow-xl rounded-md w-[95%] mx-auto my-2 flex flex-col gap-[30px] py-5 px-5">
+    <div className="bg-orange-100 shadow-xl rounded-md w-[95%] mx-auto my-2 flex flex-col gap-[30px] py-5 px-5  min-h-[550px]">
       {/* top search div */}
       <div>
         <div className="w-[80%] mx-auto flex gap-[10px] justify-center items-center">
@@ -37,11 +42,23 @@ const Body = () => {
             type="search"
             placeholder="Search a restaurant..."
             className="w-[60%] border-2 border-orange-500 rounded-md text-[18px] outline-none h-10 pl-2 cursor-text font-Montserrat font-medium"
+            value={searchText}
+            onChange={(e) => {
+              setsearchText(e.target.value);
+            }}
           />
           <div className="bg-orange-500 rounded-full py-2 px-3 cursor-pointer">
             <FontAwesomeIcon
               icon={faMagnifyingGlass}
               className="text-[18px] text-black"
+              onClick={() => {
+                console.log(searchText);
+                const filteredres = resList.filter((res) =>
+                  res.info.name.toLowerCase().includes(searchText.toLowerCase())
+                );
+                setfilteredrestaurant(filteredres);
+                setsearchText("");
+              }}
             />
           </div>
         </div>
@@ -59,10 +76,11 @@ const Body = () => {
         <button
           className="text-[16px] font-Montserrat font-semibold bg-orange-200 cursor-pointer border-2 border-black shadow-lg px-[8px] py-[8px] rounded-md outline-none"
           onClick={() => {
-            const filteredList = resList.filter(
+            const filteredList = filteredrestaurant.filter(
               (res) => res.info.avgRating > 4.2
             );
-            setresList(filteredList);
+            console.log(filteredList);
+            setfilteredrestaurant(filteredList);
           }}
         >
           Top Rated
@@ -70,8 +88,8 @@ const Body = () => {
       </div>
       {/* Restaurant Cards */}
       <div className="flex flex-wrap gap-[20px] justify-center items-center">
-        {resList && resList.length > 0 ? (
-          resList.map((restaurant, key) => (
+        {filteredrestaurant && filteredrestaurant.length > 0 ? (
+          filteredrestaurant.map((restaurant, key) => (
             <RestaurantCard key={restaurant.info.id} resData={restaurant} />
           ))
         ) : (
