@@ -13,7 +13,7 @@ const Body = () => {
   }, []);
   const fetchData = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=16.571581&lng=80.683767&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=16.5061743&lng=80.6480153&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
     console.log(json);
@@ -93,7 +93,7 @@ const Body = () => {
             <RestaurantCard key={restaurant.info.id} resData={restaurant} />
           ))
         ) : (
-          <p className="text-[20px] font-Montserrat font-semibold">
+          <p className="text-[20px] font-Montserrat font-semibold h-[400px] flex justify-center items-center ">
             No restaurants available.
           </p>
         )}
