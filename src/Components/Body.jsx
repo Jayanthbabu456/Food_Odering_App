@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [resList, setresList] = useState([]);
@@ -13,15 +14,15 @@ const Body = () => {
   }, []);
   const fetchData = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=16.5061743&lng=80.6480153&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=16.571581&lng=80.683767&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
-    console.log(json);
+    // console.log(json);
     setresList(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setfilteredrestaurant(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
   if (!resList || resList.length === 0) {
@@ -90,7 +91,12 @@ const Body = () => {
       <div className="flex flex-wrap gap-[20px] justify-center items-center">
         {filteredrestaurant && filteredrestaurant.length > 0 ? (
           filteredrestaurant.map((restaurant, key) => (
-            <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+            <Link
+              to={"/restaurants/" + restaurant.info.id}
+              key={restaurant.info.id}
+            >
+              <RestaurantCard resData={restaurant} />
+            </Link>
           ))
         ) : (
           <p className="text-[20px] font-Montserrat font-semibold h-[400px] flex justify-center items-center ">
