@@ -44,78 +44,19 @@ const Shimmer = ({ fetchData, resList, setresList }) => {
       </div>
       {/* restaurant div */}
       <div className="justify-center items-center flex flex-wrap gap-[20px] ">
-        <div className="bg-orange-300 w-[300px] h-[280px] px-[12px] py-[12px] rounded-md flex flex-col gap-[20px] shadow-lg animate-pulse">
-          <div className="w-[100%] h-3/5 bg-orange-100 rounded-md"></div>
-          <div className="flex flex-col gap-[6px]">
-            <div className="w-[90%] bg-orange-100 h-4 rounded-sm"></div>
-            <div className="w-[80%] bg-orange-100 h-4 rounded-sm"></div>
+        {[...Array(20).keys()].map((index) => (
+          <div
+            className="bg-orange-300 w-[300px] h-[280px] px-[12px] py-[12px] rounded-md flex flex-col gap-[20px] shadow-lg animate-pulse"
+            key={index}
+          >
+            <div className="w-[100%] h-3/5 bg-orange-100 rounded-md"></div>
+            <div className="flex flex-col gap-[6px]">
+              <div className="w-[90%] bg-orange-100 h-4 rounded-sm"></div>
+              <div className="w-[80%] bg-orange-100 h-4 rounded-sm"></div>
+            </div>
+            <div className="w-[100%] bg-orange-100 h-4 rounded-sm"></div>
           </div>
-          <div className="w-[100%] bg-orange-100 h-4 rounded-sm"></div>
-        </div>
-        <div className="bg-orange-300 w-[300px] h-[280px] px-[12px] py-[12px] rounded-md flex flex-col gap-[20px] shadow-lg animate-pulse">
-          <div className="w-[100%] h-3/5 bg-orange-100 rounded-md"></div>
-          <div className="flex flex-col gap-[6px]">
-            <div className="w-[90%] bg-orange-100 h-4 rounded-sm"></div>
-            <div className="w-[80%] bg-orange-100 h-4 rounded-sm"></div>
-          </div>
-          <div className="w-[100%] bg-orange-100 h-4 rounded-sm"></div>
-        </div>
-        <div className="bg-orange-300 w-[300px] h-[280px] px-[12px] py-[12px] rounded-md flex flex-col gap-[20px] shadow-lg animate-pulse">
-          <div className="w-[100%] h-3/5 bg-orange-100 rounded-md"></div>
-          <div className="flex flex-col gap-[6px]">
-            <div className="w-[90%] bg-orange-100 h-4 rounded-sm"></div>
-            <div className="w-[80%] bg-orange-100 h-4 rounded-sm"></div>
-          </div>
-          <div className="w-[100%] bg-orange-100 h-4 rounded-sm"></div>
-        </div>
-        <div className="bg-orange-300 w-[300px] h-[280px] px-[12px] py-[12px] rounded-md flex flex-col gap-[20px] shadow-lg animate-pulse">
-          <div className="w-[100%] h-3/5 bg-orange-100 rounded-md"></div>
-          <div className="flex flex-col gap-[6px]">
-            <div className="w-[90%] bg-orange-100 h-4 rounded-sm"></div>
-            <div className="w-[80%] bg-orange-100 h-4 rounded-sm"></div>
-          </div>
-          <div className="w-[100%] bg-orange-100 h-4 rounded-sm"></div>
-        </div>
-        <div className="bg-orange-300 w-[300px] h-[280px] px-[12px] py-[12px] rounded-md flex flex-col gap-[20px] shadow-lg animate-pulse">
-          <div className="w-[100%] h-3/5 bg-orange-100 rounded-md"></div>
-          <div className="flex flex-col gap-[6px]">
-            <div className="w-[90%] bg-orange-100 h-4 rounded-sm"></div>
-            <div className="w-[80%] bg-orange-100 h-4 rounded-sm"></div>
-          </div>
-          <div className="w-[100%] bg-orange-100 h-4 rounded-sm"></div>
-        </div>
-        <div className="bg-orange-300 w-[300px] h-[280px] px-[12px] py-[12px] rounded-md flex flex-col gap-[20px] shadow-lg animate-pulse">
-          <div className="w-[100%] h-3/5 bg-orange-100 rounded-md"></div>
-          <div className="flex flex-col gap-[6px]">
-            <div className="w-[90%] bg-orange-100 h-4 rounded-sm"></div>
-            <div className="w-[80%] bg-orange-100 h-4 rounded-sm"></div>
-          </div>
-          <div className="w-[100%] bg-orange-100 h-4 rounded-sm"></div>
-        </div>
-        <div className="bg-orange-300 w-[300px] h-[280px] px-[12px] py-[12px] rounded-md flex flex-col gap-[20px] shadow-lg animate-pulse">
-          <div className="w-[100%] h-3/5 bg-orange-100 rounded-md"></div>
-          <div className="flex flex-col gap-[6px]">
-            <div className="w-[90%] bg-orange-100 h-4 rounded-sm"></div>
-            <div className="w-[80%] bg-orange-100 h-4 rounded-sm"></div>
-          </div>
-          <div className="w-[100%] bg-orange-100 h-4 rounded-sm"></div>
-        </div>
-        <div className="bg-orange-300 w-[300px] h-[280px] px-[12px] py-[12px] rounded-md flex flex-col gap-[20px] shadow-lg animate-pulse">
-          <div className="w-[100%] h-3/5 bg-orange-100 rounded-md"></div>
-          <div className="flex flex-col gap-[6px]">
-            <div className="w-[90%] bg-orange-100 h-4 rounded-sm"></div>
-            <div className="w-[80%] bg-orange-100 h-4 rounded-sm"></div>
-          </div>
-          <div className="w-[100%] bg-orange-100 h-4 rounded-sm"></div>
-        </div>
-        <div className="bg-orange-300 w-[300px] h-[280px] px-[12px] py-[12px] rounded-md flex flex-col gap-[20px] shadow-lg animate-pulse">
-          <div className="w-[100%] h-3/5 bg-orange-100 rounded-md"></div>
-          <div className="flex flex-col gap-[6px]">
-            <div className="w-[90%] bg-orange-100 h-4 rounded-sm"></div>
-            <div className="w-[80%] bg-orange-100 h-4 rounded-sm"></div>
-          </div>
-          <div className="w-[100%] bg-orange-100 h-4 rounded-sm"></div>
-        </div>
+        ))}
       </div>
     </div>
   );
