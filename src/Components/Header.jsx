@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import Logo from "../Logo.png";
 import { Link } from "react-router-dom";
+import UserOnlineStatus from "../utils/UserOnlineStatus";
 const Header = () => {
   const [namebtn, setnamebtn] = useState("Login");
+  const onlineStatus = UserOnlineStatus();
   return (
     <div className="bg-orange-100 shadow-xl  rounded-md w-[95%] mx-auto px-5 py-1">
       <div className="flex justify-between items-center">
@@ -34,6 +36,15 @@ const Header = () => {
               }}
             >
               {namebtn}
+              <span
+                className={
+                  onlineStatus
+                    ? "ml-[6px] text-green-700 text-[18px]"
+                    : "ml-[6px] text-red-700 text-[18px]"
+                }
+              >
+                ●
+              </span>
             </button>
           </ul>
         </nav>

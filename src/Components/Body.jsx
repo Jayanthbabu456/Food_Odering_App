@@ -4,6 +4,7 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import UserOnlineStatus from "../utils/UserOnlineStatus";
 
 const Body = () => {
   const [resList, setresList] = useState([]);
@@ -25,6 +26,16 @@ const Body = () => {
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
+  const onlineStatus = UserOnlineStatus();
+  if (!onlineStatus) {
+    return (
+      <div className="bg-orange-100 shadow-xl rounded-md w-[95%] mx-auto my-2 flex flex-col gap-[30px] py-5 px-5  min-h-[550px] justify-center items-center">
+        <h1 className="font-Montserrat text-[30px] font-semibold">
+          Looks like you're offline!! Please check your internet connection...
+        </h1>
+      </div>
+    );
+  }
   if (!resList || resList.length === 0) {
     return (
       <Shimmer
@@ -34,6 +45,7 @@ const Body = () => {
       />
     );
   }
+
   return (
     <div className="bg-orange-100 shadow-xl rounded-md w-[95%] mx-auto my-2 flex flex-col gap-[30px] py-5 px-5  min-h-[550px]">
       {/* top search div */}

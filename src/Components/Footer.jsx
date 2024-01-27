@@ -6,7 +6,7 @@ const Footer = () => {
 
   return (
     <div className="bg-orange-100 shadow-xl rounded-md w-[95%] mx-auto px-5 py-5 flex justify-center items-center">
-      <p className="font-medium font-Montserrat text-[16px]">
+      <p className="font-medium font-Montserrat text-[18px]">
         Created By
         <a
           href="https://www.linkedin.com/in/jayanth-babu-55b4b3256/"
