@@ -5,6 +5,7 @@ import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import UserOnlineStatus from "../utils/UserOnlineStatus";
+import { RestaurantOpened } from "./RestaurantCard";
 
 const Body = () => {
   const [resList, setresList] = useState([]);
@@ -18,7 +19,8 @@ const Body = () => {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=16.571581&lng=80.683767&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
-    // console.log(json);
+    console.log(json);
+
     setresList(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
@@ -45,7 +47,8 @@ const Body = () => {
       />
     );
   }
-
+  console.log(resList);
+  const RestaurantAvailable = RestaurantOpened(RestaurantCard);
   return (
     <div className="bg-orange-100 shadow-xl rounded-md w-[95%] mx-auto my-2 flex flex-col gap-[30px] py-5 px-5  min-h-[550px]">
       {/* top search div */}
@@ -107,7 +110,11 @@ const Body = () => {
               to={"/restaurants/" + restaurant.info.id}
               key={restaurant.info.id}
             >
-              <RestaurantCard resData={restaurant} />
+              {restaurant?.info?.availability?.opened ? (
+                <RestaurantAvailable resData={restaurant} />
+              ) : (
+                <RestaurantCard resData={restaurant} />
+              )}
             </Link>
           ))
         ) : (

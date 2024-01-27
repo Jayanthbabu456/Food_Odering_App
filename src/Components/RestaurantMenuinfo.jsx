@@ -39,7 +39,7 @@ const RestaurantMenuinfo = ({ resinfo }) => {
                       </p>
                     </div>
                   </div>
-                  <div className="w-[120px] relative">
+                  <div className="w-[120px] h-[100px] relative">
                     <img
                       src={
                         item?.card?.info?.imageId

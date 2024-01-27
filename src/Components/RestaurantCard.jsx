@@ -2,6 +2,9 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faLocationDot } from "@fortawesome/free-solid-svg-icons";
 const RestaurantCard = ({ resData }) => {
+  if (!resData) {
+    return null;
+  }
   const shortcuisines = (word, maxLength) => {
     if (word.length > maxLength) {
       return word.substring(0, maxLength) + "...";
@@ -44,5 +47,17 @@ const RestaurantCard = ({ resData }) => {
     </div>
   );
 };
-
+export const RestaurantOpened = (RestaurantCard) => {
+  return (props) => {
+    const { opened } = props.resData?.info?.availability;
+    return (
+      <div className="relative">
+        <p className="absolute top-0 left-0 text-[16px] font-Montserrat font-bold text-black bg-orange-300 rounded-sm p-[6px] z-10">
+          {opened ? "Opened" : "Closed"}
+        </p>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
+};
 export default RestaurantCard;
