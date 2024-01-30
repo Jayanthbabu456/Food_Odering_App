@@ -49,11 +49,11 @@ const RestaurantCard = ({ resData }) => {
 };
 export const RestaurantOpened = (RestaurantCard) => {
   return (props) => {
-    const { opened } = props.resData?.info?.availability;
+    const { totalRatingsString } = props.resData?.info;
     return (
       <div className="relative">
         <p className="absolute top-0 left-0 text-[16px] font-Montserrat font-bold text-black bg-orange-300 rounded-sm p-[6px] z-10">
-          {opened ? "Opened" : "Closed"}
+          {totalRatingsString}
         </p>
         <RestaurantCard {...props} />
       </div>
