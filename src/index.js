@@ -3,6 +3,12 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import { RouterProvider } from "react-router-dom";
 import { AppRouter } from "./App";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<RouterProvider router={AppRouter} />);
+root.render(
+  <Provider store={appStore}>
+    <RouterProvider router={AppRouter} />
+  </Provider>
+);
