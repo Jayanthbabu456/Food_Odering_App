@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-
 import RestaurantCategories from "./RestaurantCategories";
 
 const RestaurantMenuinfo = ({ resinfo }) => {
@@ -11,17 +9,18 @@ const RestaurantMenuinfo = ({ resinfo }) => {
         c.card?.card?.["@type"] ===
           "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory"
     );
-  console.log(categories);
+  // console.log(categories);
 
   return (
     <div className="flex flex-col gap-[15px]">
       {/* categories accordian */}
-      {categories.map((category, key) => (
-        <RestaurantCategories
-          key={category?.card?.card?.title}
-          data={category?.card?.card}
-        />
-      ))}
+      {categories &&
+        categories.map((category, key) => (
+          <RestaurantCategories
+            key={category?.card?.card?.title}
+            data={category?.card?.card}
+          />
+        ))}
     </div>
   );
 };

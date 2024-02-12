@@ -1,6 +1,5 @@
 import React from "react";
-import ItemCategoryList from "./ItemCategoryList";
-
+import ItemCategory from "./ItemCategory";
 const ItemList = ({ items, items1, handleClick, showItems }) => {
   const shortdesc = (word, maxLength) => {
     if (word && word.length > maxLength) {
@@ -8,7 +7,7 @@ const ItemList = ({ items, items1, handleClick, showItems }) => {
     }
     return word;
   };
-  console.log(items1);
+
   return (
     <div>
       {items &&
@@ -48,9 +47,15 @@ const ItemList = ({ items, items1, handleClick, showItems }) => {
           </div>
         ))}
 
-      {showItems && (
-        <ItemCategoryList items1={items1} handleClick={handleClick} />
-      )}
+      {items1 &&
+        items1.map((category, key) => (
+          <ItemCategory
+            key={category?.title}
+            items1={category}
+            showItems={showItems}
+            handleClick={handleClick}
+          />
+        ))}
     </div>
   );
 };

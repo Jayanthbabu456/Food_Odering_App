@@ -7,6 +7,8 @@ const RestaurantCategories = ({ data }) => {
   const handleClick = () => {
     setshowItems(!showItems);
   };
+  const categories = data?.categories || [];
+  console.log(categories);
   return (
     <div>
       {/* header */}
@@ -28,7 +30,7 @@ const RestaurantCategories = ({ data }) => {
         {showItems && (
           <ItemList
             items={data?.itemCards || []}
-            items1={data?.categories}
+            items1={categories}
             handleClick={handleClick}
             showItems={showItems}
           />
