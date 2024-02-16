@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import CategoryList from "./CategoryList";
-const ItemCategory = ({ items1, handleClick, showItems }) => {
+const ItemCategory = ({ items1, handleClick, showItems, handleAddItem }) => {
   return (
     <div className="">
       {/* header */}
@@ -24,6 +24,7 @@ const ItemCategory = ({ items1, handleClick, showItems }) => {
             handleClick={handleClick}
             showItems={showItems}
             items1={items1}
+            handleAddItem={handleAddItem}
           />
         )}
       </div>

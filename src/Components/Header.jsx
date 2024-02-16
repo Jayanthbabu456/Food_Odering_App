@@ -2,16 +2,19 @@ import React, { useState } from "react";
 import Logo from "../Logo.png";
 import { Link } from "react-router-dom";
 import UserOnlineStatus from "../utils/UserOnlineStatus";
+import { useSelector } from "react-redux";
 const Header = () => {
   const [namebtn, setnamebtn] = useState("Login");
   const onlineStatus = UserOnlineStatus();
+  const cartItems = useSelector((store) => store.cart.items);
+  console.log(cartItems);
   return (
     <div className="bg-orange-100 shadow-xl  rounded-md w-[95%] mx-auto px-5 py-1">
       <div className="flex justify-between items-center">
         <Link to="/">
           <img src={Logo} alt="Food" className="w-[80px] cursor-pointer" />
         </Link>
-        <nav className="w-[40%] mr-5">
+        <nav className="w-[45%] mr-5">
           <ul className="flex justify-between items-center text-black text-[20px] cursor-pointer font-Montserrat font-semibold">
             <Link to="/">
               <li className="text-orange-500 hover:text-orange-700">Home</li>
@@ -26,7 +29,12 @@ const Header = () => {
                 Contact Us
               </li>
             </Link>
-            <li className="text-orange-500 hover:text-orange-700">Cart</li>
+            <Link to="/cart">
+              <li className="text-orange-500 hover:text-orange-700">
+                Cart-({cartItems.length} items)
+              </li>
+            </Link>
+
             <button
               className="bg-orange-400 hover:bg-orange-500 font-semibold font-Montserrat px-[20px] py-[8px] rounded-md text-[18px] text-black cursor-pointer"
               onClick={() => {

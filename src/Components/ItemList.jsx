@@ -1,5 +1,7 @@
 import React from "react";
 import ItemCategory from "./ItemCategory";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 const ItemList = ({ items, items1, handleClick, showItems }) => {
   const shortdesc = (word, maxLength) => {
     if (word && word.length > maxLength) {
@@ -7,7 +9,10 @@ const ItemList = ({ items, items1, handleClick, showItems }) => {
     }
     return word;
   };
-
+  const dispatch = useDispatch();
+  const handleAddItem = (item) => {
+    dispatch(addItem(item));
+  };
   return (
     <div>
       {items &&
@@ -40,7 +45,10 @@ const ItemList = ({ items, items1, handleClick, showItems }) => {
                 className="w-[100%] h-[100%] rounded-lg cursor-pointer object-cover"
               />
 
-              <button className="bg-orange-400 text-[14px] font-semibold px-[12px] py-[4px] rounded-md absolute bottom-[-10px] left-[32px]">
+              <button
+                className="bg-orange-400 text-[14px] font-semibold px-[12px] py-[4px] rounded-md absolute bottom-[-10px] left-[32px]"
+                onClick={() => handleAddItem(item)}
+              >
                 ADD
               </button>
             </div>
@@ -54,6 +62,7 @@ const ItemList = ({ items, items1, handleClick, showItems }) => {
             items1={category}
             showItems={showItems}
             handleClick={handleClick}
+            handleAddItem={handleAddItem}
           />
         ))}
     </div>

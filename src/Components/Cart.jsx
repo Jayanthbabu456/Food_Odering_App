@@ -1,22 +1,32 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { clearCart } from "../utils/cartSlice";
 
-const CategoryList = ({ items1, handleAddItem }) => {
+const Cart = () => {
   const shortdesc = (word, maxLength) => {
     if (word && word.length > maxLength) {
       return word.substring(0, maxLength) + "...";
     }
     return word;
   };
+  const cartItems = useSelector((store) => store.cart.items);
+  const dispatch = useDispatch();
+  const handleClearCart = () => {
+    dispatch(clearCart());
+  };
   return (
-    <div>
-      {items1?.itemCards &&
-        items1?.itemCards.map((item, key) => (
+    <div className="bg-orange-100 shadow-xl rounded-md w-[95%] mx-auto my-2 py-5 px-5  min-h-[540px] flex flex-col gap-[30px] items-center">
+      <p className="text-[30px] font-Montserrat font-bold text-orange-500">
+        Cart Items
+      </p>
+      {cartItems && cartItems.length > 0 ? (
+        cartItems.map((item, key) => (
           <div
             key={item?.card?.info?.id}
-            className="flex flex-row justify-between items-center w-[95%] mx-auto border-b border-orange-400 h-[160px] "
+            className="flex flex-row justify-between items-center w-[65%] mx-auto  h-[120px] bg-orange-200 px-[20px] rounded-lg shadow-lg cursor-pointer"
           >
             <div className="font-Montserrat">
-              <p className="text-[18px] font-semibold ">
+              <p className="text-[18px] font-semibold">
                 {item?.card?.info?.name}
               </p>
               <p className="text-[16px] font-medium">
@@ -38,18 +48,22 @@ const CategoryList = ({ items1, handleAddItem }) => {
                 alt={item?.name}
                 className="w-[100%] h-[100%] rounded-lg cursor-pointer object-cover"
               />
-
-              <button
-                className="bg-orange-400 text-[14px] font-semibold px-[12px] py-[4px] rounded-md absolute bottom-[-10px] left-[32px]"
-                onClick={() => handleAddItem(item)}
-              >
-                ADD
-              </button>
             </div>
           </div>
-        ))}
+        ))
+      ) : (
+        <p className="text-[30px] font-Montserrat font-medium text-orange-500 h-[300px]  flex justify-center items-center">
+          Your cart is empty. Add items to your cart!
+        </p>
+      )}
+      <button
+        className="text-[18px] font-Montserrat font-bold bg-orange-200 cursor-pointer  shadow-lg px-[10px] py-[8px] rounded-md outline-none"
+        onClick={handleClearCart}
+      >
+        Clear Cart
+      </button>
     </div>
   );
 };
 
-export default CategoryList;
+export default Cart;
