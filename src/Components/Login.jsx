@@ -1,6 +1,10 @@
 import React, { useRef, useState } from "react";
 import { Checkvalidatedata } from "../utils/Validate";
-
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../utils/Firebase";
 const Login = () => {
   const [isSignIn, setisSignIn] = useState(true);
   const [errormsg, seterrormsg] = useState("");
@@ -13,7 +17,42 @@ const Login = () => {
   const handlebuttonclick = () => {
     const msg = Checkvalidatedata(email.current.value, password.current.value);
     seterrormsg(msg);
+    if (msg) return;
+    if (!isSignIn) {
+      // sign up
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          console.log(user);
+        })
+        .catch((error) => {
+          const errorMessage = error.message;
+          seterrormsg(errorMessage);
+        });
+    } else {
+      // sign in
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log(user);
+        })
+        .catch((error) => {
+          const errorMessage = error.message;
+          seterrormsg(errorMessage);
+        });
+    }
   };
+
   return (
     <div className="bg-orange-100 shadow-xl rounded-md w-[95%] mx-auto my-2 py-5 px-5  min-h-[540px] flex flex-col justify-center items-center">
       <form
