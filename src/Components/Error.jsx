@@ -10,7 +10,7 @@ const Error = () => {
         <p className="text-[200px] animate-bounce">{err.status}</p>
         <p className="text-[80px]">{err.statusText}</p>
       </div>
-      <Link to="/">
+      <Link to="/app/home">
         <button className="bg-orange-400 hover:bg-orange-500 font-bold font-Montserrat px-[20px] py-[8px] rounded-md text-[30px] text-black cursor-pointer mt-[30px]">
           Go To Home
         </button>

@@ -9,7 +9,7 @@ const RestaurantMenuTop = ({ resinfo }) => {
     cuisines = [],
     expectationNotifiers = [],
     areaName,
-  } = resinfo?.cards[0]?.card?.card?.info || {};
+  } = resinfo?.cards[2]?.card?.card?.info || {};
   const enrichedText = expectationNotifiers[0]?.text;
   return (
     <div className="flex justify-between items-center w-[80%] mx-auto px-[20px]">

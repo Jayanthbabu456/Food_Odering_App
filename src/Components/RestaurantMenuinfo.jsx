@@ -2,7 +2,7 @@ import RestaurantCategories from "./RestaurantCategories";
 
 const RestaurantMenuinfo = ({ resinfo }) => {
   const categories =
-    resinfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+    resinfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
       (c) =>
         c.card?.card?.["@type"] ===
           "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory" ||

@@ -107,7 +107,7 @@ const Body = () => {
         {filteredrestaurant && filteredrestaurant.length > 0 ? (
           filteredrestaurant.map((restaurant, key) => (
             <Link
-              to={"/restaurants/" + restaurant.info.id}
+              to={"/app/restaurants/" + restaurant.info.id}
               key={restaurant.info.id}
             >
               {restaurant?.info?.availability?.opened ? (
