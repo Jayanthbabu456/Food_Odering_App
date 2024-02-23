@@ -7,7 +7,9 @@ import Header from "./Components/Header";
 import { Outlet, createBrowserRouter } from "react-router-dom";
 import RestaurantMenu from "./Components/RestaurantMenu";
 import Cart from "./Components/Cart";
-import Login from "./Components/Login";
+import SignIn from "./Components/SignIn";
+import SignUp from "./Components/SignUp";
+
 const App = () => {
   return (
     <div className="bg-white  py-2 min-h-screen">
@@ -20,31 +22,36 @@ const App = () => {
 export const AppRouter = createBrowserRouter([
   {
     path: "/",
+    element: <SignIn />,
+  },
+  {
+    path: "/signup",
+    element: <SignUp />,
+  },
+  {
+    path: "/app",
     element: <App />,
+
     children: [
       {
-        path: "/",
+        path: "home",
         element: <Body />,
       },
       {
-        path: "/about",
+        path: "about",
         element: <About />,
       },
       {
-        path: "/contact",
+        path: "contact",
         element: <Contact />,
       },
       {
-        path: "/restaurants/:resId",
+        path: "restaurants/:resId",
         element: <RestaurantMenu />,
       },
       {
-        path: "/cart",
+        path: "cart",
         element: <Cart />,
-      },
-      {
-        path: "/login",
-        element: <Login />,
       },
     ],
     errorElement: <Error />,
